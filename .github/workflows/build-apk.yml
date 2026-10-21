@@ -19,33 +19,30 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Setup Android SDK
-      uses: android-actions/setup-android@v3
-
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
       with:
         gradle-version: '8.9'
 
-    - name: Accept Android Licenses & Build APK
+    - name: Build Debug APK
       run: |
-        # 1. Determine working directory
+        # 1. यदि प्रोजेक्ट सब-फोल्डर में हो तो सही डायरेक्टरी में जाएँ
         TARGET_DIR="."
         if [ -d "android-project" ] && [ ! -f "build.gradle.kts" ]; then
           TARGET_DIR="android-project"
         fi
         cd "$TARGET_DIR"
 
-        # 2. Accept SDK licenses
-        yes | sdkmanager --licenses || true
+        # 2. इनबिल्ट Android SDK के लाइसेंस स्वीकार करें
+        yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses 2>/dev/null || true
 
-        # 3. Setup wrapper if missing
+        # 3. gradlew मिसिंग होने पर जनरेट करें
         if [ ! -f "gradlew" ]; then
           gradle wrapper --gradle-version 8.9
         fi
         chmod +x gradlew
 
-        # 4. Build Debug APK
+        # 4. APK संकलित (Compile) करें
         ./gradlew assembleDebug --no-daemon
 
     - name: Upload Generated APK
