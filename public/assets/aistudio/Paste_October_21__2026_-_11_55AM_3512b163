@@ -1,0 +1,853 @@
+MASTER PROMPT: NEXCAL — Premium Neon Liquid Glass Calculator App
+Complete Android App Development Specification
+Branding: Created By Shiv Yogi
+Working App Name: NEXCAL (configurable)
+Platform: Android-first
+Primary Design Inspiration: Modern Google Calculator, Realme Calculator, Material You, Liquid Glass
+Development Environment: Google AI Studio
+Priority: Fully functional application, premium UI, accurate calculations, smooth animations, extensive customization, and Android compatibility.
+---
+1. YOUR ROLE AND PRIMARY OBJECTIVE
+Act as a senior Android application developer, UI/UX designer, animation engineer, mathematical software engineer, and quality assurance specialist.
+Build a complete, polished, production-oriented calculator application named NEXCAL.
+Do not create only a static design, mockup, landing page, or non-functional prototype. Implement the actual calculator engine, interactive buttons, settings, persistent storage, animation behavior, theme system, history, converters, and navigation.
+The application must look premium and feel responsive on Android phones. Its visual identity should combine:
+The clean, rounded mathematical-symbol style of the redesigned Google Calculator icon.
+The smooth touch feedback and button glow associated with modern Realme and Redmi calculators.
+Google Calculator-style expression and answer transitions.
+A subtle Liquid Glass interface.
+Android Material You and genuine Dynamic Colour support wherever the chosen platform supports it.
+Extensive user customization without sacrificing usability or calculation accuracy.
+Critical development rules
+Inspect the available development environment and its capabilities before choosing the implementation approach.
+Prefer native Android development using Kotlin, Jetpack Compose, Material 3, and supported Android Dynamic Colour APIs for the full Android application.
+If Google AI Studio's current environment supports only web application generation, clearly distinguish the web prototype from a native Android application. Do not falsely claim that web CSS can access Android wallpaper colours or change the actual launcher icon.
+If a native Android project cannot be produced directly, create the most complete working implementation supported by the environment, provide the required source files, and explain the exact steps needed to complete the native Android integration.
+Never invent successful builds, tests, downloads, or APK files. Report what has actually been implemented and verified.
+Use modular, maintainable code. Do not put the entire application into one enormous component or source file.
+All visible controls must perform their advertised actions. No decorative, non-functional buttons.
+Do not leave important features as TODO comments, placeholders, or simulated functionality when they can be implemented.
+Do not use unsafe expression execution such as JavaScript eval() or equivalent untrusted code evaluation.
+Do not copy Google's proprietary logo. Create an original icon inspired by the same broad visual language.
+2. APP IDENTITY AND BRANDING
+Create a premium calculator brand.
+Working application name: NEXCAL.
+Developer credit: Created By Shiv Yogi.
+Default application version: 1.0.0, subject to the actual build configuration.
+Use a clean, modern typography system.
+Keep the application name and developer credit configurable where appropriate.
+Use a short, tasteful animated opening sequence.
+Ensure that branding never interferes with the calculator's primary purpose.
+The name NEXCAL must be changeable from the in-app branding settings. Changing the in-app display name must not falsely imply that the Android package name or launcher label has also changed.
+3. APP ICON DESIGN
+Create an original, premium Android calculator icon inspired by the clean design language of the newer Google Calculator icon.
+Visual direction
+A clean white or softly translucent rounded-square tile.
+Four recognizable mathematical operator symbols: minus, multiplication, plus, and equals.
+Rounded green operator containers.
+A vivid but controlled neon-green glow around selected elements.
+Subtle cyan-green rim lighting.
+Refined depth, highlights, and a restrained glass-like finish.
+Excellent visibility at small icon sizes.
+A balanced composition without clutter or unnecessary text.
+No copied Google logo, wordmark, or proprietary artwork.
+The icon should look polished on both dark and light home-screen wallpapers.
+Required icon assets
+Where supported by the native Android build, generate:
+Adaptive icon foreground.
+Adaptive icon background.
+Appropriate monochrome icon for supported themed-icon environments.
+Launcher icon resources at the required Android densities.
+A larger in-app logo asset.
+A small icon preview for Theme Studio.
+The application must use its actual launcher icon assets rather than displaying an unrelated image inside the app and claiming the launcher icon has changed.
+Allow users to select an in-app logo and preview a custom icon. Implement actual launcher-icon switching only if the Android platform and application architecture support it correctly.
+4. MAIN CALCULATOR SCREEN
+Create the main screen using the following layout structure.
+A. Top navigation
+At the top of the screen, include:
+Calculator tab.
+Converter tab.
+Three-dot overflow menu.
+Appropriate selected and unselected states.
+Smooth tab transitions.
+A compact layout that works on smaller Android screens.
+The three-dot menu must open a functional popup containing:
+History.
+Theme Studio.
+Scientific Calculator or Scientific Mode.
+Settings.
+About App.
+Privacy Policy.
+Do not crowd the main calculator screen with unnecessary navigation controls.
+B. Calculation display
+Create a large, clean calculation display above the keypad.
+It must support:
+Left-to-right mathematical expressions.
+Right-aligned expression display where appropriate.
+A large, readable current expression.
+A secondary live-result preview.
+A larger final answer when the user presses equals.
+Smooth number and result transitions.
+Automatic text resizing for long expressions.
+Horizontal scrolling or an appropriate multiline layout for very long expressions.
+Copying the expression and result.
+Correct decimal, negative-number, and large-number formatting.
+Proper handling of cursor position when editing an expression.
+The display must never overlap the keypad, clip important digits, or make the answer unreadable.
+C. Calculator keypad
+Implement a four-column keypad with these default rows:
+Row 1: C, Backspace, %, ÷
+Row 2: 7, 8, 9, ×
+Row 3: 4, 5, 6, −
+Row 4: 1, 2, 3, +
+Row 5: Scientific/Mode Shortcut, 0, Decimal Point, Equals
+The mode shortcut should have a clear, configurable function. It may open scientific functions or switch the calculator mode.
+The keypad must have consistent spacing, touch targets, responsive dimensions, and accessible labels.
+Default appearance:
+Number buttons: dark charcoal surfaces.
+Clear and Backspace: orange or theme-dependent accent.
+Operators: theme-dependent accent.
+Equals: prominent green accent.
+Background: deep AMOLED black by default.
+Corners: large rounded rectangles.
+Borders: subtle.
+Shadows and glow: controlled, not excessive.
+When a custom theme is selected, the keypad must update consistently across all buttons.
+5. ADVANCED TOUCH AND GLOW ANIMATION ENGINE
+This is one of the application's signature features.
+Implement genuine interaction-driven animations rather than permanently displaying a glowing static button.
+Required animations
+A. Touch Glow
+When a user presses a button:
+Show a glow immediately.
+Use the current theme's accent colour.
+Illuminate the button surface and its surrounding edge.
+Animate the glow smoothly.
+Remove or fade the glow after the interaction.
+Avoid excessive bloom that obscures the button label.
+B. Ripple Effect
+Display a touch-origin ripple when appropriate.
+Use the selected theme colour.
+Keep the ripple clipped to the button shape.
+Prevent ripples from escaping rounded corners.
+Avoid introducing noticeable input delay.
+C. Press and Release
+Slightly scale the button down when pressed.
+Return it smoothly to its normal size when released.
+Use a natural easing curve.
+Avoid exaggerated bouncing.
+Preserve the same interaction feel across number and operator buttons.
+D. Number Glow
+When a digit is entered:
+Briefly highlight the pressed number.
+Provide subtle visual feedback in the expression display.
+Avoid flashing the entire screen.
+Allow the effect to follow the selected Glow Intensity setting.
+E. Operator Highlight
+Highlight the currently selected mathematical operator.
+For example, when the expression contains 25 + 4:
+The plus operator should receive a subtle accent highlight.
+When the operator changes, update the highlight smoothly.
+Do not incorrectly highlight unrelated operators.
+F. Equals Animation
+When the user presses equals:
+Validate the expression.
+Calculate the final result.
+Animate the result into its final display position.
+Apply a brief, tasteful glow to the equals button and result.
+Do not delay the calculation itself for the sake of the animation.
+Handle errors gracefully.
+G. Animation Settings
+Expose the following controls in Settings:
+Glow Enabled/Disabled.
+Glow Intensity.
+Glow Duration.
+Ripple Enabled/Disabled.
+Press Animation Enabled/Disabled.
+Number Glow Enabled/Disabled.
+Result Animation Speed.
+Overall Animation Speed.
+Reduce Motion.
+Animation settings must take effect immediately.
+6. GOOGLE CALCULATOR-STYLE ANSWER SLIDE-UP ANIMATION
+Implement a polished result transition inspired by the behaviour of modern calculator applications.
+Required behaviour
+While the user types an expression:
+Calculate a live preview whenever the expression is valid.
+Keep the current expression visible.
+Display the live result in a secondary line.
+Do not show misleading results for invalid or incomplete expressions.
+When the expression changes:
+Transition the previous preview upward when appropriate.
+Bring the new preview upward into view.
+Use smooth opacity and position transitions.
+Avoid jumping layouts.
+Avoid unnecessary animation when only an insignificant formatting detail changes.
+When equals is pressed:
+Promote the final answer to the primary result display.
+Animate the result naturally.
+Preserve the expression so the user can review it.
+Support copying or reusing the answer.
+Handle negative, decimal, integer, and large-number results.
+The animation must remain smooth during rapid input and must not display stale results from previous expressions.
+Provide a Reduced Motion mode that replaces movement-heavy transitions with short, subtle fades.
+7. LIQUID GLASS DESIGN SYSTEM
+Create a refined Liquid Glass-inspired visual system.
+Do not apply transparency indiscriminately to every element.
+Design characteristics
+Translucent button surfaces where visually appropriate.
+Subtle edge highlights.
+Controlled background blur.
+Soft reflections.
+Fine borders.
+Gentle surface gradients.
+Natural depth and layering.
+Smooth popup and sheet transitions.
+Excellent text contrast.
+Use true background blur when supported by the chosen UI framework. If true blur is unavailable or too expensive, use a convincing translucent surface with a gradient and border.
+Performance requirements
+Avoid excessive blur on every button.
+Avoid expensive full-screen effects during rapid calculations.
+Prefer GPU-friendly animations.
+Respect reduced-motion preferences.
+Maintain responsive touch input.
+Provide an optional simpler visual mode for low-performance devices.
+The application must remain attractive when blur or transparency is disabled.
+8. GOOGLE MATERIAL YOU DYNAMIC COLOUR
+Create a dedicated Google Dynamic Colour option inside Colour Theme settings.
+This is a required feature, not merely a label or decorative preset.
+Native Android requirements
+When building the native Android version:
+Use supported Android Material 3 Dynamic Colour functionality.
+Use the system-provided dynamic colour scheme when available.
+Respect Android version and device support.
+Update the application theme when the system colour scheme changes, where supported.
+Support light and dark dynamic colour schemes.
+Use appropriate primary, secondary, tertiary, surface, background, outline, and error roles.
+Ensure text and button contrast remain readable.
+Apply the selected colour scheme consistently to the calculator, keypad, menus, dialogs, history, settings, converter, and Theme Studio.
+Derive Glow colours from appropriate theme roles rather than hardcoding neon green everywhere.
+Preserve the user's selected theme mode.
+Dynamic Colour selection
+In Settings, create the following colour theme options:
+Google Dynamic Colour.
+AMOLED Black.
+Neon Green.
+Neon Blue.
+Cyber Violet.
+Light Theme.
+Dark Theme.
+Custom Theme.
+The selected option must be visually indicated.
+When Google Dynamic Colour is selected:
+Use the available system-provided palette.
+Adapt the background and surfaces appropriately.
+Update button accents.
+Update selected operators.
+Update glow effects.
+Update menus, popup surfaces, and settings.
+Preserve accessibility and text contrast.
+If the device or runtime does not support genuine Dynamic Colour:
+Show an appropriate fallback.
+Keep the application functional.
+Do not claim that wallpaper colours are being read when they are not.
+Explain unsupported features where appropriate.
+A browser-only implementation must not pretend that CSS alone provides the actual Android wallpaper-derived palette. If the environment only supports web development, implement the available web features and clearly identify the additional native Android work required.
+9. THEME STUDIO
+Create a dedicated Theme Studio where users can create, edit, save, and manage their own calculator themes.
+A. Theme creation
+Allow users to:
+Create a new theme.
+Enter a custom theme name.
+Select background colour.
+Select keypad surface colour.
+Select number text colour.
+Select operator colour.
+Select equals-button colour.
+Select clear-button colour.
+Select glow colour.
+Select glass tint.
+Adjust surface transparency.
+Adjust border brightness.
+Adjust glow intensity.
+Preview changes live.
+Save the theme.
+Cancel changes.
+Restore the previous theme.
+B. Theme management
+Implement:
+Rename Theme.
+Duplicate Theme.
+Delete Theme.
+Apply Theme.
+Preview Theme.
+Restore Default Theme.
+Protect built-in presets from accidental permanent deletion.
+Confirm destructive actions.
+Save custom themes locally.
+C. Built-in theme presets
+Provide these starting presets:
+Neon Forest
+AMOLED background.
+Green neon accents.
+Soft green glow.
+Dark glass surfaces.
+Liquid Ice
+Dark blue background.
+Cyan and blue accents.
+Cool glass highlights.
+Cyber Violet
+Dark violet background.
+Purple and magenta accents.
+Controlled purple glow.
+Pure Minimal
+Clean monochrome design.
+Minimal shadows.
+Subtle or disabled glow.
+Material Dynamic
+System-derived Android Dynamic Colour when supported.
+Light Glass
+Light surfaces.
+Readable dark text.
+Soft, restrained accents.
+All presets must be editable where appropriate, and changes must be saved.
+10. BUTTON SHAPE CUSTOMIZER
+Create a separate Button Shape section in Theme Studio or Settings.
+Supported shapes
+Circle.
+Rounded Square.
+Extra-Rounded Rectangle.
+Square.
+Pill Shape.
+Custom Corner Radius.
+Additional controls
+Corner Radius slider.
+Button Height.
+Button Width or aspect ratio where appropriate.
+Horizontal Spacing.
+Vertical Spacing.
+Border Thickness.
+Border Brightness.
+Glow Border.
+Surface Transparency.
+Press Scale.
+Show a live keypad preview while the user adjusts the controls.
+The layout must automatically adapt to the selected shape.
+Circular buttons must not overlap. Square buttons must not become clipped. Long labels must remain readable.
+Provide a Reset to Default button.
+11. APP LOGO AND NAME CUSTOMIZATION
+Create an App Identity section.
+In-app customization
+Allow users to:
+Change the application display name shown inside the app.
+Choose from built-in logo designs.
+Select a supported image from the device gallery.
+Preview the logo.
+Choose a background colour.
+Adjust the logo's in-app presentation.
+Restore the default logo.
+Save the custom identity locally.
+Launcher icon distinction
+Changing the logo shown inside the app is different from changing the actual Android launcher icon.
+For the native Android version:
+Implement launcher-icon alternatives only when supported by a valid Android implementation.
+Use supported activity-alias or equivalent Android mechanisms if appropriate.
+Define valid launcher resources and manifest entries.
+Explain any limitations imposed by the launcher or Android version.
+Never claim that the launcher icon changed merely because an in-app preview changed.
+Do not require unnecessary permissions to change the in-app logo.
+12. APPLICATION OPENING EXPERIENCE
+Create a short, premium opening animation.
+Sequence:
+Fade in the original calculator icon.
+Reveal the neon edge glow.
+Display the configured application name.
+Display “Created By Shiv Yogi” briefly.
+Transition smoothly to the calculator screen.
+Requirements:
+Keep the animation short.
+Avoid unnecessary delays.
+Provide an option to disable the intro.
+Respect Reduced Motion.
+Avoid replaying a long animation after every minor navigation.
+Ensure the calculator remains accessible quickly.
+13. BASIC CALCULATOR ENGINE
+Implement a reliable mathematical expression engine.
+Required operations
+Addition.
+Subtraction.
+Multiplication.
+Division.
+Percentage.
+Decimal numbers.
+Negative numbers.
+Sign toggle.
+Parentheses.
+Operator precedence.
+Backspace.
+Clear Entry or Clear All.
+Live result preview.
+Final calculation.
+Expression editing.
+Copy and paste.
+Repeat or reuse results where appropriate.
+Mathematical correctness
+Follow standard operator precedence.
+Support parentheses correctly.
+Define percentage behaviour consistently.
+Handle unary minus.
+Avoid floating-point display artifacts where practical.
+Use a clear numerical precision policy.
+Do not silently convert invalid results into zero.
+Handle division by zero.
+Handle malformed expressions.
+Handle extremely large values.
+Handle overflow and non-finite results.
+Format displayed values without changing their underlying calculation unnecessarily.
+Use a well-defined parser and evaluation model. Do not evaluate arbitrary user input as executable code.
+Input behaviour
+Prevent invalid sequences where appropriate.
+Support replacement of a trailing operator.
+Handle repeated decimal points correctly.
+Handle Backspace safely.
+Keep the expression and preview synchronized.
+Do not clear the user's expression unexpectedly.
+Provide useful feedback for invalid expressions.
+14. SCIENTIFIC CALCULATOR
+Create an accessible Scientific Mode.
+Functions
+sin.
+cos.
+tan.
+Inverse trigonometric functions.
+log base 10.
+Natural logarithm.
+Square root.
+Cube root.
+Nth root where supported.
+Square.
+Cube.
+General exponentiation.
+Factorial.
+Pi.
+Euler's number.
+Scientific notation.
+Parentheses.
+Modulo where mathematically appropriate.
+Angle modes
+Provide:
+Degrees.
+Radians.
+Display the currently selected mode clearly.
+Memory controls
+Implement:
+MC: Clear Memory.
+MR: Recall Memory.
+M+: Add to Memory.
+M−: Subtract from Memory.
+Show a subtle memory indicator when a stored value exists.
+Scientific error handling
+Reject invalid logarithm domains.
+Handle square roots of invalid real-number inputs.
+Handle factorial restrictions.
+Handle invalid powers.
+Handle division by zero.
+Display readable errors rather than crashing.
+Use a clearly documented precision and domain policy.
+15. HISTORY SYSTEM
+Create a dedicated History screen.
+Each entry should include:
+Original expression.
+Result.
+Date and time where available.
+Calculation type where useful.
+Actions
+Tap an entry to reuse its result.
+Restore an expression for editing.
+Copy the expression.
+Copy the result.
+Delete one entry.
+Clear all history with confirmation.
+Search history.
+Handle an empty history state.
+Store history locally and restore it after application restart.
+Avoid unnecessary collection of personal information. History must remain local unless a separate, explicitly configured feature is later introduced.
+Do not erase history when the user changes the colour theme.
+16. MEMORY AND CLIPBOARD
+Implement calculator memory independently of the persistent history.
+Support:
+Store a value.
+Recall a stored value.
+Add to memory.
+Subtract from memory.
+Clear memory.
+For clipboard operations:
+Copy expression.
+Copy result.
+Paste a valid mathematical expression.
+Validate pasted content.
+Show brief confirmation after successful copy.
+Avoid unnecessary clipboard reads.
+17. CONVERTER MODULE
+Create a Converter tab with category navigation.
+Required categories
+Length.
+Weight and Mass.
+Temperature.
+Area.
+Volume.
+Time.
+Speed.
+Data Storage.
+Currency.
+Where appropriate, provide:
+Input value.
+Source unit.
+Target unit.
+Converted result.
+Swap Units button.
+Clear Input.
+Copy Result.
+Recent conversion history if practical.
+Use accurate conversion factors and appropriate precision.
+Temperature conversion must account for offsets, not just multiplication.
+Data Storage conversions must clearly distinguish decimal and binary units where relevant.
+Currency converter
+Obtain rates from a reputable external source if network access is available.
+Show the rate's timestamp or last-updated date.
+Show loading, error, and offline states.
+Cache the most recent valid rates where appropriate.
+Never invent current exchange rates.
+Do not block ordinary calculator functionality when the network is unavailable.
+18. ADDITIONAL CALCULATORS
+Implement additional calculator modules with validated inputs.
+Percentage Calculator
+Calculate a percentage of a number.
+Calculate percentage increase or decrease.
+Calculate the percentage difference where mathematically appropriate.
+Discount Calculator
+Original price.
+Discount percentage.
+Discount amount.
+Final price.
+GST Calculator
+Base amount.
+GST rate.
+Tax amount.
+Total amount.
+Inclusive or exclusive tax mode.
+Do not imply that the tool provides official tax advice.
+EMI Calculator
+Principal.
+Annual interest rate.
+Loan tenure.
+Monthly EMI.
+Total repayment.
+Total interest.
+Validate inputs and document assumptions.
+Ratio and Average
+Simplify ratios where appropriate.
+Calculate arithmetic mean.
+Validate empty or invalid input.
+Keep these modules organized and consistent with the main application design.
+19. THREE-DOT MENU
+Create a polished overflow menu in the upper-right corner.
+Menu items:
+History.
+Converter.
+Scientific Mode.
+Theme Studio.
+Settings.
+About App.
+Privacy Policy.
+Requirements:
+Smooth popup animation.
+Clear icons and labels.
+Correct navigation.
+Dismiss on outside tap where appropriate.
+Dismiss on Back.
+Accessible labels.
+Dynamic Colour-compatible surfaces.
+No dead menu items.
+20. SETTINGS SCREEN
+Organize Settings into clear categories.
+Appearance
+Google Dynamic Colour.
+Light Theme.
+Dark Theme.
+AMOLED Black.
+Custom Theme.
+Theme selection.
+Button Customization
+Shape.
+Corner Radius.
+Button Height.
+Button Spacing.
+Border and Glow.
+Animation
+Glow toggle.
+Glow intensity.
+Glow duration.
+Ripple toggle.
+Result transition speed.
+Reduce Motion.
+Display
+Number formatting.
+Decimal precision.
+Scientific notation preference.
+Font size.
+Expression display behaviour.
+Sound and Haptics
+Button sounds.
+Haptic feedback.
+Vibration toggle.
+Branding
+In-app application name.
+In-app logo.
+Opening animation.
+Developer credit display where appropriate.
+Data
+History management.
+Clear history.
+Reset settings.
+Restore default appearance.
+About
+Application information.
+Version.
+Developer credits.
+Privacy Policy.
+Licences where applicable.
+All settings must be functional, validated, and persisted.
+21. ABOUT APP SCREEN
+Create a premium About screen.
+Include:
+Application icon.
+Application name.
+Actual app version.
+Short application description.
+“Created By Shiv Yogi”.
+Main features.
+Privacy Policy.
+Relevant open-source licences.
+Build information where appropriate.
+Suggested description:
+“NEXCAL is a modern calculator application designed for accurate calculations, customizable themes, smooth animations, and a personalized Android experience.”
+Do not invent company registrations, awards, affiliations, or official Google partnerships.
+22. PRIVACY AND PERMISSIONS
+Design the app to work without requiring an account.
+Basic calculation must not require internet.
+Store history and themes locally.
+Do not collect unnecessary personal data.
+Do not request unrelated permissions.
+Use appropriate system pickers for selecting an image.
+Request only permissions necessary for implemented features.
+Explain the need for any network-dependent feature.
+Provide a privacy notice consistent with the actual implementation.
+Do not claim that the app never transmits data unless that has been verified.
+23. DATA PERSISTENCE
+Persist the following where applicable:
+Selected theme.
+Custom themes.
+Button shape.
+Glow settings.
+Animation settings.
+Display preferences.
+Calculator mode.
+Angle mode.
+Memory value if intended to persist.
+Calculation history.
+In-app branding preferences.
+Use appropriate local storage for the selected implementation.
+For a native Android application, use a suitable persistent storage mechanism such as DataStore for preferences and an appropriate local database for structured history when necessary.
+For a web implementation, use appropriate browser storage and document its limitations.
+Requirements:
+Settings survive application restart.
+Changing themes does not delete history.
+Reset actions require confirmation.
+Invalid stored values are handled safely.
+Custom images that are no longer accessible fall back gracefully.
+24. ACCESSIBILITY AND RESPONSIVENESS
+Support different Android screen sizes.
+Respect system font scaling where practical.
+Maintain readable contrast.
+Use clear touch targets.
+Provide accessible descriptions for icon-only buttons.
+Support screen-reader navigation.
+Ensure selected themes preserve legibility.
+Support Reduced Motion.
+Avoid relying on colour alone to communicate errors.
+Prevent clipping and overlap.
+Support portrait layout as the primary mode.
+Handle landscape layout appropriately if supported.
+Respect system navigation and status bars.
+Ensure dialogs and menus remain visible on smaller screens.
+25. PERFORMANCE REQUIREMENTS
+Prioritize immediate button response.
+Keep mathematical evaluation separate from heavy visual work.
+Avoid blocking the UI thread.
+Avoid unnecessary full-screen blur.
+Avoid repeated expensive recomposition or rendering.
+Debounce expensive operations only when necessary, without delaying basic input feedback.
+Keep animations smooth under normal use.
+Use appropriate caching for assets.
+Handle low-memory conditions gracefully.
+Provide fallback visual effects when advanced blur is unavailable.
+26. TECHNICAL ARCHITECTURE
+For a native Android implementation, prefer:
+Kotlin.
+Jetpack Compose.
+Material 3.
+Supported Android Dynamic Colour APIs.
+A clearly separated mathematical evaluation engine.
+A structured state-management approach.
+Local persistent storage.
+A maintainable theme system.
+Reusable keypad and display components.
+A dedicated animation layer.
+Appropriate Android application resources.
+Proper Gradle configuration.
+Separate the code into logical modules or packages, for example:
+ui
+ui.components
+ui.theme
+ui.screens
+calculator
+scientific
+converter
+history
+settings
+storage
+branding
+navigation
+Adapt this structure to the actual project size rather than creating empty modules.
+If a different implementation technology is required by the available environment, explain the trade-offs and keep the code modular.
+27. REQUIRED SCREENS
+Implement all screens necessary for the selected scope:
+Main Calculator.
+Scientific Calculator or Scientific Mode.
+Converter.
+Calculation History.
+Theme Studio.
+Custom Theme Editor.
+Button Shape Customizer.
+Branding Customizer.
+Settings.
+About App.
+Privacy Policy.
+Relevant dialogs and confirmation sheets.
+Appropriate error and empty states.
+Every screen must have working navigation and consistent styling.
+28. QUALITY ASSURANCE AND TESTING
+Create a test plan and run the tests supported by the environment.
+Mathematical tests
+Test:
+Basic arithmetic.
+Operator precedence.
+Parentheses.
+Negative numbers.
+Decimal calculations.
+Percentage behaviour.
+Division by zero.
+Invalid expressions.
+Scientific functions.
+Degree and Radian modes.
+Large and small numbers.
+Memory operations.
+Unit conversion accuracy.
+Temperature conversion.
+EMI and percentage calculations.
+UI tests
+Verify:
+All keypad buttons work.
+Backspace and Clear behave correctly.
+Result transitions do not corrupt values.
+Theme changes apply consistently.
+Custom themes persist.
+Button shapes update correctly.
+The three-dot menu navigates correctly.
+About and Privacy screens open.
+History survives restart.
+Settings persist.
+Empty and error states render properly.
+Platform tests
+Where possible, test:
+Different screen sizes.
+Supported Android versions.
+Light and dark system modes.
+Actual Dynamic Colour support.
+Unsupported Dynamic Colour fallback.
+Reduced Motion.
+Offline operation.
+Launcher icon resources.
+App startup and navigation.
+Never report tests as passed unless they were actually executed.
+29. DELIVERABLES
+Produce the following deliverables according to the capabilities of the environment:
+Complete source code.
+All required project configuration files.
+A modular and maintainable code structure.
+Application icon assets.
+Working Basic Calculator.
+Working Scientific Calculator.
+Working Converter module.
+History and persistent settings.
+Theme Studio and custom themes.
+Dynamic Colour integration where supported.
+Liquid Glass and Neon animation implementation.
+About screen and developer branding.
+Privacy documentation matching the implementation.
+Tests for the mathematical engine and critical features.
+Clear setup and build instructions.
+Android APK build instructions, or an actual verified APK if the environment supports building it.
+A feature implementation report distinguishing completed, partially completed, and unavailable features.
+Do not provide a fake download link or claim that an APK exists when it has not been built.
+30. IMPLEMENTATION WORKFLOW
+Work in a structured sequence.
+Phase 1: Environment and project setup
+Inspect the environment, identify supported project types, establish the architecture, and configure the build.
+Phase 2: Main UI
+Build the calculator screen, keypad, display, navigation, and responsive layout.
+Phase 3: Calculation engine
+Implement and test mathematical parsing, evaluation, formatting, and error handling.
+Phase 4: Animation system
+Implement touch feedback, Glow, Ripple, Number Highlight, and Answer Slide-Up transitions.
+Phase 5: Themes
+Implement Material 3 theming, Dynamic Colour where supported, built-in presets, and custom themes.
+Phase 6: Customization
+Implement Button Shape, Glow Controls, Logo Customization, and in-app Name Customization.
+Phase 7: Additional features
+Implement Scientific Mode, History, Memory, Converter, and additional calculators.
+Phase 8: Settings and About
+Implement persistent settings, About App, developer credits, and privacy information.
+Phase 9: Testing
+Run supported tests, fix defects, verify critical user flows, and document limitations.
+Phase 10: Final delivery
+Provide the complete project files, setup instructions, build instructions, and an accurate implementation report.
+Do not stop after completing the first visual screen. Continue through the implementation phases that the environment supports.
+31. FINAL ACCEPTANCE CRITERIA
+The application is considered complete only when the following requirements are satisfied to the extent supported by the chosen platform:
+The calculator performs accurate arithmetic.
+The keypad responds correctly.
+Touch Glow and animations are functional.
+Results animate smoothly.
+The UI follows the selected theme.
+Google Dynamic Colour works through genuine Android integration where supported.
+Custom themes can be created and saved.
+Button shapes can be changed.
+In-app Logo and Name customization works.
+History and Settings persist.
+Scientific functions are validated.
+Converter calculations are accurate.
+The overflow menu and About screen work.
+Developer branding is present.
+The app remains usable when advanced visual effects are disabled.
+Errors do not crash the application.
+The project can be built using documented instructions.
+Any unavailable native integration or unverified build is clearly disclosed.
+FINAL INSTRUCTION
+Begin by inspecting the available Google AI Studio development environment and determining which project type it can actually produce.
+Then implement the application in a maintainable, testable manner. Prioritize a fully working calculator engine and main interface before optional advanced features, but continue through the remaining phases rather than stopping at a mockup.
+If the environment supports a complete native Android project, produce it. If it supports only a web application, build the best working web implementation possible and explicitly identify the native Android work required for genuine Dynamic Colour, launcher-icon switching, and APK delivery.
+Make reasonable implementation decisions without repeatedly asking questions. Do not silently omit requirements. Do not claim completion of features that are only represented by mockups.
+The final result should feel like a premium, personalized Android calculator: modern, accurate, smooth, visually distinctive, highly customizable, and branded “Created By Shiv Yogi.”
