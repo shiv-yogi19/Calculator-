@@ -1,0 +1,6 @@
+{
+  "name": "NEXCAL — Neon Liquid Glass Calculator",
+  "description": "Premium Android-style Neon Liquid Glass calculator with Material You dynamic color, advanced touch glow, scientific engine, unit converter, and Theme Studio. Created By Shiv Yogi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
